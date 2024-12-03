@@ -114,17 +114,6 @@ return {
 			gitbrowser = { enabled = true },
 			lazygit = { enabled = true },
 			dashboard = {
-				preset = {
-					header = [[
-						                       ▟▙            
-						                       ▝▘            
-██▃▅▇█▆▖  ▗▟████▙▖   ▄████▄   ██▄  ▄██  ██  ▗▟█▆▄▄▆█▙▖
-██▛▔ ▝██  ██▄▄▄▄██  ██▛▔▔▜██  ▝██  ██▘  ██  ██▛▜██▛▜██
-██    ██  ██▀▀▀▀▀▘  ██▖  ▗██   ▜█▙▟█▛   ██  ██  ██  ██
-██    ██  ▜█▙▄▄▄▟▊  ▀██▙▟██▀   ▝████▘   ██  ██  ██  ██
-▀▀    ▀▀   ▝▀▀▀▀▀     ▀▀▀▀       ▀▀     ▀▀  ▀▀  ▀▀  ▀▀
-					]],
-				},
 				sections = {
 					{ section = "header" },
 					{ section = "keys", gap = 1, padding = 1 },
