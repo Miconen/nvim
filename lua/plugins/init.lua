@@ -4,7 +4,24 @@ return {
 		"folke/which-key.nvim",
 		event = "VimEnter", -- Sets the loading event to 'VimEnter'
 		opts = {
-			preset = "modern",
+			preset = "helix",
+			win = {
+				-- Position at bottom-left
+				col = 0,
+
+				-- Adjust size as needed
+				width = { min = 30, max = 40 },
+				height = { min = 15, max = 60 },
+
+				-- Add padding around the popup
+				-- padding = { 1, 2 },
+			},
+
+			layout = {
+				width = { min = 20, max = 40 },
+				spacing = 3,
+				align = "left",
+			},
 		},
 	},
 	{ -- Fuzzy Finder (files, lsp, etc)
