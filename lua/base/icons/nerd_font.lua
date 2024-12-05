@@ -10,6 +10,7 @@ return {
 	DapBreakpointRejected = "",
 	DapLogPoint = ".>",
 	DapStopped = "󰁕",
+	Database = "",
 	Debugger = "",
 	DefaultFile = "󰈙",
 	Diagnostic = "󰒡",

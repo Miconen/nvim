@@ -18,6 +18,7 @@ local icons = {
 	terminal = { desc = get_icon("Terminal", 1, true) .. "Terminal" },
 	fold = { desc = get_icon("Sort", 1, true) .. "Folds" },
 	diagnostic = { desc = get_icon("Diagnostic", 1, true) .. "Diagnostics" },
+	db = { desc = get_icon("Database", 1, true) .. "Database" },
 }
 
 -- General
@@ -31,6 +32,9 @@ require("base.mappings.debug")(maps, icons)
 
 -- Packages
 require("base.mappings.packages")(maps, icons)
+
+-- Database
+require("base.mappings.database")(maps, icons)
 
 -- Telescope
 require("base.mappings.telescope")(maps, icons)
