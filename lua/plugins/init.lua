@@ -254,6 +254,48 @@ return {
 		--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 	},
 	{
+		"atiladefreitas/dooing",
+		config = function()
+			require("dooing").setup({
+				save_path = vim.fn.stdpath("data") .. "/dooing_todos.json",
+
+				-- Window settings
+				window = {
+					width = 55, -- Width of the floating window
+					height = 20, -- Height of the floating window
+					border = "rounded", -- Border style
+					padding = {
+						top = 1,
+						bottom = 1,
+						left = 2,
+						right = 2,
+					},
+				},
+
+				quick_keys = true, -- Quick keys window
+				-- Keymaps
+				keymaps = {
+					toggle_window = false, -- Toggle the main window
+					new_todo = "i", -- Add a new todo
+					toggle_todo = "x", -- Toggle todo status
+					delete_todo = "d", -- Delete the current todo
+					delete_completed = "D", -- Delete all completed todos
+					close_window = "q", -- Close the window
+					add_due_date = "h", -- Add due date to todo
+					remove_due_date = "r", -- Remove due date from todo
+					toggle_help = "?", -- Toggle help window
+					toggle_tags = "t", -- Toggle tags window
+					undo_delete = "u", -- Undo delete
+					clear_filter = "c", -- Clear active tag filter
+					edit_todo = "e", -- Edit todo item
+					edit_tag = "e", -- Edit tag [on tag window]
+					delete_tag = "d", -- Delete tag [on tag window]
+					search_todo = "/", -- Toggle todo searching
+					toggle_priority = "<Space>", -- Toggle todo priority on creation
+				},
+			})
+		end,
+	},
 	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },

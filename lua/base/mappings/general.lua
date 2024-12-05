@@ -1,3 +1,6 @@
+local utils = require("base.utils")
+local is_available = utils.is_available
+
 return function(maps, icons)
 	maps.n["<Esc>"] = { "<cmd>nohlsearch<CR>", desc = "Clear highlights on search when pressing <Esc> in normal mode" }
 	maps.n["<leader>q"] = { vim.diagnostic.setloclist, desc = "Quickfix list" }
