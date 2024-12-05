@@ -10,4 +10,29 @@ return function(maps, icons)
 	maps.n["<C-k>"] = { "<C-w><C-k>", desc = "Move focus to the upper window" }
 	maps.n["vs"] = { "<cmd>vs<CR>", desc = "Vertical split" }
 	maps.n["sp"] = { "<cmd>sp<CR>", desc = "Vertical split" }
+
+	if is_available("todo-comments.nvim") then
+		local todo_comments = require("todo-comments")
+
+		maps.n["<leader>ut"] = {
+			function()
+				vim.api.nvim_command("TodoTelescope")
+			end,
+			desc = "Show todo comments",
+		}
+
+		maps.n["]t"] = {
+			function()
+				todo_comments.jump_next()
+			end,
+			desc = "Next todo comment",
+		}
+
+		maps.n["[t"] = {
+			function()
+				todo_comments.jump_prev()
+			end,
+			desc = "Previous todo comment",
+		}
+	end
 end
