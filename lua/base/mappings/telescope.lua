@@ -14,9 +14,33 @@ return function(maps, icons)
 		maps.n["<leader>sw"] = { builtin.grep_string, desc = "Current Word" }
 		maps.n["<leader>sg"] = { builtin.live_grep, desc = "Grep" }
 		maps.n["<leader>sd"] = { builtin.diagnostics, desc = "Diagnostics" }
-		maps.n["<leader>sr"] = { builtin.resume, desc = "Resume" }
+		maps.n["<leader>s<CR>"] = { builtin.resume, desc = "Resume" }
 		maps.n["<leader>s."] = { builtin.oldfiles, desc = 'Recent Files ("." for repeat)' }
 		maps.n["<leader>s<leader>"] = { builtin.buffers, desc = "Existing buffers" }
+
+		-- Grep hidden files
+		maps.n["<leader>sG"] = {
+			function()
+				builtin.live_grep({
+					additional_args = function()
+						return { "--hidden", "--glob", "!**/.git/*" }
+					end,
+				})
+			end,
+			desc = "Grep hidden files",
+		}
+
+		-- Search hidden files
+		maps.n["<leader>sF"] = {
+			function()
+				builtin.find_files({
+					hidden = true,
+					no_ignore = true,
+					file_ignore_patterns = { ".git/" },
+				})
+			end,
+			desc = "Find Hidden Files",
+		}
 
 		maps.n["<leader>/"] = {
 			function()
@@ -45,6 +69,14 @@ return function(maps, icons)
 				builtin.find_files({ cwd = vim.fn.stdpath("config") })
 			end,
 			desc = "Neovim files",
+		}
+
+		-- Shortcut for grepping Neovim configuration files
+		maps.n["<leader>sN"] = {
+			function()
+				builtin.live_grep({ cwd = vim.fn.stdpath("config") })
+			end,
+			desc = "Neovim grep",
 		}
 	end
 end
