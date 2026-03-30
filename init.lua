@@ -1,18 +1,26 @@
-for _, source in ipairs {
-  'base.options',
-  'base.lazy', -- Loads plugins
-  'base.autocmds',
-  'base.mappings',
-} do
-  local status_ok, error = pcall(require, source)
-  if not status_ok then
-    vim.api.nvim_err_writeln('Failed to load ' .. source .. '\n\n' .. error)
-  end
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git", "clone", "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-if base.default_colorscheme then
-  local status_ok = pcall(vim.cmd.colorscheme, base.default_colorscheme)
-  if not status_ok then
-    require('base.utils').notify('Error setting up colorscheme: ' .. base.default_colorscheme, vim.log.levels.ERROR)
-  end
-end
+-- Leader must be set before lazy so which-key picks it up correctly
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
+
+require("options")
+require("autocmds")
+
+require("lazy").setup("plugins", {
+  change_detection = { notify = false },
+  rocks = { enabled = false },
+})
+
+-- Keymaps are loaded after plugins so snacks/wk are available
+require("keymaps")
