@@ -35,9 +35,6 @@ return {
 
 			-- Git blame / log integration
 			require("mini.git").setup({})
-
-			-- Statusline (configured in lua/statusline.lua)
-			require("statusline").setup()
 		end,
 	},
 

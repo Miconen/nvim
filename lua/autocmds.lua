@@ -80,6 +80,3 @@ autocmd("User", {
 		end
 	end,
 })
-
--- Winbar breadcrumb (configured in lua/winbar.lua)
-require("winbar").setup()
