@@ -201,6 +201,10 @@ return {
 				-- Linters
 				"markdownlint",
 				"biome",
+				-- Debuggers
+				"delve",
+				"debugpy",
+				"js-debug-adapter",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -306,12 +310,16 @@ return {
 				nerd_font_variant = "mono",
 			},
 			sources = {
-				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+				default = { "lazydev", "lsp", "path", "snippets", "buffer", "dadbod" },
 				providers = {
 					lazydev = {
 						name = "LazyDev",
 						module = "lazydev.integrations.blink",
 						score_offset = 100, -- prioritise lazydev over lsp for lua
+					},
+					dadbod = {
+						name = "Dadbod",
+						module = "vim_dadbod_completion.blink",
 					},
 				},
 			},

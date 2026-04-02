@@ -2,7 +2,7 @@
 local wk = require("which-key")
 local map = vim.keymap.set
 wk.add({
-	{ "<leader>u", group = " UI" },
+	{ "<leader>u", group = " UI" },
 })
 
 -- ── Snacks toggles ───────────────────────────────────────────────────────────
@@ -21,6 +21,10 @@ Snacks.toggle.line_number():map("<leader>ul")
 Snacks.toggle.treesitter():map("<leader>uT")
 Snacks.toggle.inlay_hints():map("<leader>uh")
 Snacks.toggle.dim():map("<leader>uz")
+
+map("n", "<leader>un", function()
+	Snacks.notifier.show_history()
+end, { desc = "Notification history" })
 
 -- ── Package managers ─────────────────────────────────────────────────────────
 wk.add({ { "<leader>p", group = "󰏖 Packages" } })

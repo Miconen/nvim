@@ -36,13 +36,8 @@ return {
 			-- Git blame / log integration
 			require("mini.git").setup({})
 
-			-- Statusline
-			local statusline = require("mini.statusline")
-			statusline.setup({ use_icons = vim.g.have_nerd_font })
-			---@diagnostic disable-next-line: duplicate-set-field
-			statusline.section_location = function()
-				return "%2l:%-2v"
-			end
+			-- Statusline (configured in lua/statusline.lua)
+			require("statusline").setup()
 		end,
 	},
 
@@ -52,5 +47,35 @@ return {
 		event = "InsertEnter",
 		opts = {},
 		-- blink.cmp integration is handled in plugins/lsp.lua
+	},
+
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		opts = {
+			modes = {
+				char = {
+					jump_labels = true,
+				},
+			},
+		},
+		keys = {
+			{
+				"s",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").jump()
+				end,
+				desc = "Flash jump",
+			},
+			{
+				"S",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").treesitter()
+				end,
+				desc = "Flash treesitter",
+			},
+		},
 	},
 }
