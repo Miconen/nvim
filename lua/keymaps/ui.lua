@@ -2,7 +2,7 @@
 local wk = require("which-key")
 local map = vim.keymap.set
 wk.add({
-	{ "<leader>u", group = " UI" },
+	{ "<leader>u", group = " UI" },
 })
 
 -- ── Snacks toggles ───────────────────────────────────────────────────────────

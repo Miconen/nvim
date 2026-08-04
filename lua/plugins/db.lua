@@ -7,7 +7,7 @@ return {
 			{
 				"kristijanhusak/vim-dadbod-ui",
 				keys = {
-					{ "<leader>D", "<cmd>DBUIToggle<cr>", desc = "Toggle DB UI" },
+					{ "<leader>d", "<cmd>DBUIToggle<cr>", desc = " Database UI" },
 				},
 				init = function()
 					vim.g.db_ui_use_nerd_fonts = 1
